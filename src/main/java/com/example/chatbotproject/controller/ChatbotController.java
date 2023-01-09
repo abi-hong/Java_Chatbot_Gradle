@@ -1,21 +1,32 @@
 package com.example.chatbotproject.controller;
 
-import com.example.chatbotproject.entity.Chatbot;
-import com.example.chatbotproject.repository.ChatbotRepository;
+import com.example.chatbotproject.service.ChatbotDbService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import java.io.IOException;
 
-@RestController
+
 @RequiredArgsConstructor
+@RestController
 public class ChatbotController {
 
-    private final ChatbotRepository chatbotRepository;
+    private final ChatbotDbService chatbotDbService;
 
-    @GetMapping("/chatbot")
-    public List<Chatbot> findAllChatbot() {
-        return chatbotRepository.findAll();
+    @GetMapping("/save/questions")
+    public String insertQuestions(){
+        System.out.println("controller start");
+        chatbotDbService.saveAllQuestions();
+        return " ";
     }
+
+    @GetMapping("/save/answers")
+    public String insertAnswers() throws IOException {
+        System.out.println("controller start");
+        chatbotDbService.saveAllAnswers();
+        return " ";
+    }
+
+
 }
