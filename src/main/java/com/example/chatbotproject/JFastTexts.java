@@ -11,7 +11,7 @@ public class JFastTexts {
 
     public void jfasttextPizza(String question){
         JFastText jft = new JFastText();
-        ///////////////////Word embedding learning
+        ///////////////////Word embedding learning 토큰화
         jft.runCmd(new String[] {//항상 텍스트 형태로 줘야만 하나?
                 "skipgram",
                 "-input", "C:/Users/PERSONA SYSTEM/Desktop/HEESOO/chatbotproject/src/main/resources/data/unlabeled_data.txt",//todo 입력 데이터
@@ -38,4 +38,17 @@ public class JFastTexts {
         //상위 n개의 확률 가져오기(마이너스에 결과라도 확률이 나오면 반환해줌!
         System.out.println("predictProba: " + jft.predictProba(question, 5));
     }
+
+    public String getIntent(String question) {
+        JFastText jft = new JFastText();
+        jft.loadModel("C:/Users/PERSONA SYSTEM/Desktop/HEESOO/chatbotproject/src/main/resources/models/supervised.model.bin");
+
+        // do label prediction
+        JFastText.ProbLabel probLabel = jft.predictProba(question);
+        System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
+                question, probLabel.label, Math.exp(probLabel.logProb));
+
+        return probLabel.label;
+    }
+
 }

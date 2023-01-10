@@ -10,22 +10,22 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Chatbot {
+public class Answers {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 10, nullable = false)
-    private String chatbot_intent;
+    @Column(length = 30, nullable = false)
+    private String intent;
 
     @Column(length = 100, nullable = false)
-    private String chatbot_answer;
+    private String answer;
 
     @Builder
-    public Chatbot(Long id, String chatbot_intent, String chatbot_answer) {
+    public Answers(Long id, String intent, String answer) {
         this.id = id;
-        this.chatbot_intent = chatbot_intent;
-        this.chatbot_answer = chatbot_answer;
+        this.intent = intent;
+        this.answer = answer;
     }
 }

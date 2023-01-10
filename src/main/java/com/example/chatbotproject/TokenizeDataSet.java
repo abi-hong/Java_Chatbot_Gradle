@@ -36,6 +36,18 @@ public class TokenizeDataSet {
         return tokenizedSentences;
     }
 
+    public String tokenizeQuestion(String question) {
+        String result = "";
+        Komoran komoran = new Komoran(DEFAULT_MODEL.LIGHT);
+        KomoranResult analyzeResultList = komoran.analyze(question);
+        List<String> tokenList = analyzeResultList.getMorphesByTags("NNG", "NNP", "NNB", "VV");
+        for (String token : tokenList) {
+            result = result + token + " ";
+        }
+        System.out.println("NNG, NNP, NNB, VV : " + tokenList);
+        return result;
+    }
+
     public ArrayList<String> readTxtFile(String path) {
         ArrayList<String> sentences = new ArrayList<>();
         BufferedReader br = null;

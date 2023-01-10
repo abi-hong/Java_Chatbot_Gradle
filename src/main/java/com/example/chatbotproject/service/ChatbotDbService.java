@@ -3,9 +3,9 @@ package com.example.chatbotproject.service;
 import com.example.chatbotproject.JFastTexts;
 import com.example.chatbotproject.ChatbotAnswerDb;
 import com.example.chatbotproject.TokenizeDataSet;
-import com.example.chatbotproject.entity.Chatbot;
+import com.example.chatbotproject.entity.Answers;
 import com.example.chatbotproject.entity.Question;
-import com.example.chatbotproject.repository.ChatbotRepository;
+import com.example.chatbotproject.repository.AnswerRepository;
 import com.example.chatbotproject.repository.QuestionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,8 +22,8 @@ public class ChatbotDbService {
     public final TokenizeDataSet tokenizeDataSet;
     public final JFastTexts jFastTexts;
     public Question questions; //todo questions 빈 주입 문제(이건 빈 주입을 하면 안되나)
-    public Chatbot chatbot;
-    public final ChatbotRepository chatbotRepository;
+    public Answers chatbot;
+    public final AnswerRepository answerRepository;
     public final ChatbotAnswerDb chatbotAnswerDb;
 
     @Transactional
@@ -57,25 +57,22 @@ public class ChatbotDbService {
 
     @Transactional
     public void saveAllAnswers() throws IOException {
-        System.out.println("start");
-        chatbotAnswerDb.returnAnswers();
+        //System.out.println("start");
+        //chatbotAnswerDb.returnAnswers();
         chatbotAnswerDb.splitAnswers();
-        System.out.println("start splitAnswers");
+        //System.out.println("start splitAnswers");
         List<String> intentsData = chatbotAnswerDb.returnIntents();
         List<String> answersData = chatbotAnswerDb.returnAnswers();
-        List<Chatbot> chatbotsList = new ArrayList<>();
+        List<Answers> chatbotsList = new ArrayList<>();
 
         // 데이터 저장
-        for(String intentData: intentsData) {
-            for(String answerData : answersData) {
-                chatbot = Chatbot.builder()
-                        .chatbot_intent(intentData)
-                        .chatbot_answer(answerData)
+        for(int i = 0; i < intentsData.size(); i++) {
+            chatbot = Answers.builder()
+                        .intent(intentsData.get(i))
+                        .answer(answersData.get(i))
                         .build();
                 chatbotsList.add(chatbot);
-            }
         }
-        chatbotRepository.saveAll(chatbotsList);
+        answerRepository.saveAll(chatbotsList);
     }
-
 }
