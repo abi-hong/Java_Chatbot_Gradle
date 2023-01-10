@@ -11,13 +11,10 @@ import javax.persistence.*;
 public class Menu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 30)
-    private String menu_intent;
-
-    @Column
-    private int price;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(length = 30)
     private String menu_name;
+
+    @Column
+    private int menu_price;
 }

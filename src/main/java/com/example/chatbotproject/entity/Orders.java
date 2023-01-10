@@ -20,8 +20,11 @@ public class Orders {
     @Column
     private boolean delivery;
 
-    @Column(length = 30)
+    @Column(length = 50)
     private String address;
 
     // 메뉴 의도
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MENU_NAME")
+    private Menu menu;
 }

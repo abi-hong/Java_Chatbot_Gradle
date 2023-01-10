@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Path {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(length = 30)
     private String directory_name;
 
