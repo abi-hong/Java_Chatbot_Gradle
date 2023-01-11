@@ -28,6 +28,5 @@ public class IntentAnalyzeService {
         String intent = jFastTexts.getIntent(tokenizedSentences);
 
         return answerRepository.findByIntent(intent).getAnswer();
-
     }
 }

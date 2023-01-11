@@ -47,6 +47,7 @@ public class ChatbotController {
                 .status(StatusCode.OK)
                 .responseMessage(ResponseMessage.ANSWER_SUCCESS)
                 .answer(answer)
+                .direction("주문하시겠습니까? Yes는 1, No는 2를 입력해주세요. Exit은 0을 입력해주세요.")
                 .build();
 
         return dto;
