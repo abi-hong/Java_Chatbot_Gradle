@@ -1,4 +1,4 @@
-package com.example.chatbotproject.entity.dto.Answer;
+package com.example.chatbotproject.dto.res.answer;
 
 import lombok.AccessLevel;
 import lombok.Builder;

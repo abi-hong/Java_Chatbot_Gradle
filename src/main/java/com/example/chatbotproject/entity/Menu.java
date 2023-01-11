@@ -4,11 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Menu {
+public class Menu{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,4 +1,4 @@
-package com.example.chatbotproject.entity.dto.Answer;
+package com.example.chatbotproject.dto.req.answer;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
