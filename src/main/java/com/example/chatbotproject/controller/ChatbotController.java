@@ -1,7 +1,7 @@
 package com.example.chatbotproject.controller;
 
-import com.example.chatbotproject.entity.dto.ChatbotAnswerRequestDto;
-import com.example.chatbotproject.entity.dto.ChatbotAnswerResponseDto;
+import com.example.chatbotproject.entity.dto.Answer.ChatbotAnswerRequestDto;
+import com.example.chatbotproject.entity.dto.Answer.ChatbotAnswerResponseDto;
 import com.example.chatbotproject.entity.dto.ResponseMessage;
 import com.example.chatbotproject.entity.dto.StatusCode;
 import com.example.chatbotproject.service.IntentAnalyzeService;
@@ -52,4 +52,9 @@ public class ChatbotController {
 
         return dto;
     }
+
+    // 첫 주문 지시 후, 사용자한테 Yes, No, Exit에 해당하는 숫자 리턴 받기
+    @PostMapping("/post/order1")
+    public
+
 }
