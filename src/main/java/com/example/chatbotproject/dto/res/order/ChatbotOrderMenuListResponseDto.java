@@ -11,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 public class ChatbotOrderMenuListResponseDto {
 
+    /*
     private String menu_name;
     private int menu_price;
 
@@ -21,5 +22,16 @@ public class ChatbotOrderMenuListResponseDto {
 
     public static ChatbotOrderMenuListResponseDto of(Menu menu) {
         return new ChatbotOrderMenuListResponseDto(menu);
+    }
+    */
+
+    private List<Menu> menuList;
+
+    private ChatbotOrderMenuListResponseDto(List<Menu> menuList) {
+        this.menuList = menuList;
+    }
+
+    public static ChatbotOrderMenuListResponseDto of(List<Menu> menuList) {
+        return new ChatbotOrderMenuListResponseDto(menuList);
     }
 }

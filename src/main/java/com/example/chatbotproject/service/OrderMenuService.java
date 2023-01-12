@@ -19,11 +19,12 @@ public class OrderMenuService {
     private final MenuRepository menuRepository;
 
     public ChatbotOrderMenuListResponseDto  menuList(ChatbotOrderMenuListRequestDto request) {
-
-        List<ChatbotOrderMenuListResponseDto.MenuList> menus;
-
-        if(request.getUserTypedMessage() == 1) {
-
+        if (request.getUserTypedMessage() == 1) { // Yes
+            return ChatbotOrderMenuListResponseDto.of(menuRepository.findAll());
+        } else if (request.getUserTypedMessage() == 2) { // No
+            return ChatbotOrderMenuListResponseDto.of(null);
+        } else {
+            return ChatbotOrderMenuListResponseDto.of(null);
         }
     }
 }
