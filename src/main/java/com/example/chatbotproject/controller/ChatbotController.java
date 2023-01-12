@@ -71,4 +71,6 @@ public class ChatbotController {
         return ChatbotOrderMenuListResponse.newResponse(LOAD_MENU_LIST_SUCCESS, responseDto);
     }
 
+    @PostMapping("/api/chatbot/")
+
 }
